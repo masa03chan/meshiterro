@@ -1,6 +1,6 @@
 class PostImagesController < ApplicationController
   def new
-    @post_image = PostImage.page(params[:])
+    @post_image = PostImage.page(params[:page])
   end
 
   def create
@@ -8,7 +8,7 @@ class PostImagesController < ApplicationController
     @post_image.user_id = current_user.id
     if @post_image.save
       redirect_to post_images_path
-    else 
+    else
       render :new
     end
   end
